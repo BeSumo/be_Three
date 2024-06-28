@@ -80,33 +80,33 @@ void registro_cuentas::eliminar(string rol){
     }
     else {
         bool found = false;
-        while(!found){
+        while(i<ranuras && found==false){
             int pos = p(rol,i);
             if(tabla[pos].rol==rol){
                 tabla[index].nombre= "";
                 tabla[index].descripcion = "";
                 tabla[index].rol= "";
-            }
+                found = true;
+            i++;
+         }
+            cout<<"el rol no existe"<<endl;
         }
     }
 
 }
+
+void registro_cuentas::modificar(string rol, string descripcion){
+    
+    int i = 0;
+    int index = hash(rol)%ranuras;
+    if (tabla[index].rol == rol){
+        tabla[index].descripcion = descripcion;
+    }  
+}
+
+
 /*
 
-void registro_cuentas::eliminar(string rol) {
-    int i = 0;
-    int index;
-    do {
-        index = p(rol, i);
-        if (tabla[index].rol == rol && tabla[index].activo) {
-            tabla[index].activo = false;
-            ocupadas--;
-            factor_de_carga = static_cast<float>(ocupadas) / ranuras;
-            return;
-        }
-        i++;
-    } while (tabla[index].activo && i < ranuras);
-    cout << "Rol no existente" << endl;
 }
 
 void registro_cuentas::modificar(string rol, string descripcion) {
@@ -120,7 +120,7 @@ void registro_cuentas::modificar(string rol, string descripcion) {
         }
         i++;
     } while (tabla[index].activo && i < ranuras);
-    cout << "Rol no existente" << endl;
+    cout << "Rol no existente" << endlbool found = false;;
 }
 
 void registro_cuentas::redimensionar(int nuevo_tamano) {
